@@ -1,68 +1,31 @@
 <template>
   <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        next.fuya.info
-      </h1>
-      <h2 class="subtitle">
-        My ace Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
+    <span v-html="r" />
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Prismic from 'prismic-javascript'
+import PrismicDOM from 'prismic-dom'
+
+const endpoint = 'https://fuya.prismic.io/api/v2'
 
 export default {
-  components: {
-    Logo
+  components: {},
+  computed: {
+    r() {
+      return this.res && PrismicDOM.RichText.asHtml(this.res.data.title)
+    }
+  },
+  asyncData({ params }) {
+    return Prismic.getApi(endpoint, {})
+      .then(api => api.getSingle('top_page'))
+      .then(response => ({
+        res: response
+      }))
   }
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
