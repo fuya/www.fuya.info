@@ -18,9 +18,13 @@
     "@nuxtjs/pwa": "^2.6.0",
     "contentful": "^7.1.0",
     "cross-env": "^5.2.0",
+    "node-sass": "^4.11.0",
+    "normalize.css": "^8.0.1",
     "nuxt": "^2.3.4",
+    "nuxt-sass-resources-loader": "^2.0.5",
     "remark": "^10.0.1",
-    "remark-html": "^9.0.0"
+    "remark-html": "^9.0.0",
+    "sass-loader": "^7.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
