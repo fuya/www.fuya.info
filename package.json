@@ -16,10 +16,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
+    "contentful": "^7.1.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.3.4",
-    "prismic-dom": "^2.1.0",
-    "prismic-javascript": "^2.0.1"
+    "nuxt": "^2.3.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
