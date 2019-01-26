@@ -1,15 +1,29 @@
 <template>
   <section class="container">
     {{ entry.fields.title }}
+    ---
+    {{ /* eslint-disable-next-line vue/no-v-html */}}
+    <div v-html="bodyHTML" />
   </section>
 </template>
 
 <script>
+/* eslint-disable no-console */
 import { createClient } from '~/plugins/contentful.js'
+import remark from 'remark'
+import html from 'remark-html'
+
 const client = createClient()
 
 export default {
   components: {},
+  computed: {
+    bodyHTML() {
+      return remark()
+        .use(html)
+        .processSync(this.entry.fields.bodyMd).contents
+    }
+  },
   head() {
     return {
       title: this.entry,
