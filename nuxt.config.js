@@ -1,4 +1,6 @@
+import { createClient } from './plugins/contentful.js'
 const pkg = require('./package')
+const client = createClient()
 
 module.exports = {
   mode: 'universal',
@@ -78,6 +80,32 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    }
+  },
+  generate: {
+    fallback: true,
+    interval: 100,
+    routes() {
+      return Promise.all([
+        client.getEntries({
+          content_type: 'post'
+        })
+      ]).then(([posts]) => {
+        return [
+          ...posts.items
+            .map(post => [
+              {
+                route: `${post.fields.category}/${post.fields.slug}`,
+                payload: post
+              },
+              {
+                route: `posts/${post.fields.slug}`,
+                payload: post
+              }
+            ])
+            .flat()
+        ]
+      })
     }
   }
 }
