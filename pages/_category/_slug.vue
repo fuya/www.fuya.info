@@ -10,7 +10,6 @@ import Markdown from '~/components/Markdown'
 const client = createClient()
 
 export default {
-  layout: 'post',
   head() {
     return {
       title: `${this.post.fields.title} | Fuya.info`,
