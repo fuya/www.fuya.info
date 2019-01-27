@@ -1,23 +1,20 @@
 <template>
   <header :class="$style.header">
-    <a href="/">
+    <nuxt-link to="/">
       <h1 :class="$style.siteName">
         Fuya.info
       </h1>
-    </a>
+    </nuxt-link>
     <nav :class="$style.nav">
-      <a href="">
+      <nuxt-link to="/about-me">
         About
-      </a>
-      <a href="">
+      </nuxt-link>
+      <nuxt-link to="/diary">
         日記
-      </a>
-      <a href="">
+      </nuxt-link>
+      <nuxt-link to="/snippets">
         snippets
-      </a>
-      <a href="">
-        リンク
-      </a>
+      </nuxt-link>
     </nav>
   </header>
 </template>
