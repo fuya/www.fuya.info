@@ -1,5 +1,4 @@
 import { createClient } from './plugins/contentful.js'
-const pkg = require('./package')
 const client = createClient()
 
 module.exports = {
@@ -9,13 +8,33 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Fuya.info',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Fuya.info は Fuyaのウェブサイトです。いろいろなことを書きます。'
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: `Fuya.info`
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content:
+          'Fuya.info は Fuyaのウェブサイトです。いろいろなことを書きます。'
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'https://fuya.info/default_og_image.png'
+      }
+    ]
   },
 
   /*
