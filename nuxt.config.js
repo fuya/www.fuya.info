@@ -52,6 +52,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    extractCSS: true,
     /*
     ** You can extend webpack config here
     */
@@ -67,7 +68,6 @@ module.exports = {
             : '[hash:base64:8]',
         camelCase: true
       }
-      vueloader.options.extractCSS = true
 
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
