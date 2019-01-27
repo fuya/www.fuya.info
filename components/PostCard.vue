@@ -7,8 +7,13 @@
       {{ post.summary }}
     </div>
     <div :class="$style.meta">
-      <span :class="$style.publishAt">{{ post.publishAt | formatDate }}</span>
-      <span v-for="(tag, i) in post.tag" :class="$style.tag" :key="i">
+      <span v-if="withCategory" :class="$style.category">
+        {{ post.category }}
+      </span>
+      <span :class="$style.publishAt">
+        {{ post.publishAt | formatDate }}
+      </span>
+      <span v-for="(tag, i) in post.tag" :key="i" :class="$style.tag">
         {{ tag }}
       </span>
     </div>
@@ -25,6 +30,11 @@ export default {
       type: Object,
       required: true,
       validate: post => post.title
+    },
+    withCategory: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   computed: {
@@ -64,7 +74,7 @@ export default {
 }
 
 .title {
-  margin: 0.5rem 0;
+  margin-bottom: 1rem;
   font-size: $x-large-font-size;
   font-weight: bold;
   color: $DARK_ORANGE;
@@ -84,15 +94,27 @@ export default {
   align-items: center;
   font-size: $small-font-size;
 
+  .category {
+    padding: 0.125rem 0.5rem;
+    margin-right: 0.2rem;
+    font-weight: bold;
+    color: $WHITE;
+    text-transform: capitalize;
+    white-space: nowrap;
+    background: $DARK_ORANGE;
+    border: 1px solid $DARK_ORANGE;
+    border-radius: 4px;
+  }
+
   .publishAt {
-    margin-right: 1rem;
+    margin-right: 0.2rem;
     font-weight: bold;
     white-space: nowrap;
   }
 
   .tag {
-    padding: 0.25rem 0.5rem;
-    margin: 0 0.2rem;
+    padding: 0.125rem 0.25rem;
+    margin-right: 0.2rem;
     color: $DARK_ORANGE;
     white-space: nowrap;
     border: 1px solid $DARK_ORANGE;
