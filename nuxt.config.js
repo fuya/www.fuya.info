@@ -29,6 +29,10 @@ module.exports = {
   css: ['normalize.css', '~/assets/scss/base.scss'],
   sassResources: ['~/assets/scss/variables.scss'],
 
+  router: {
+    middleware: 'redirect_endwith_dothtml'
+  },
+
   /*
   ** Plugins to load before mounting the App
   */
