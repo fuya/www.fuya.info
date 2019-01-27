@@ -64,7 +64,13 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    'nuxt-sass-resources-loader'
+    'nuxt-sass-resources-loader',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-25035763-1'
+      }
+    ]
   ],
   /*
   ** Axios module configuration
