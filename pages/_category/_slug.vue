@@ -75,7 +75,7 @@ export default {
   validate({ params }) {
     return (
       /^[-0-9a-z_]+$/.test(params.slug) &&
-      ['post', 'diary'].includes(params.category)
+      ['post', 'diary', 'snippets', 'meetup'].includes(params.category)
     )
   }
 }
