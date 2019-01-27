@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <section>
+    <section :class="$style.main">
       <nuxt />
     </section>
     <Footer />
@@ -19,3 +19,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" module>
+.main {
+  padding: 0 4px;
+  @include min-screen($WIDTH_S) {
+    padding: 0 1rem;
+  }
+  @include min-screen($WIDTH_M) {
+    padding: 0 2rem;
+  }
+}
+</style>
