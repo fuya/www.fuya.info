@@ -1,14 +1,21 @@
 <template>
   <div>
-    <nuxt />
+    <Header />
+    <section>
+      <nuxt />
+    </section>
+    <Footer />
   </div>
 </template>
 
-<style lang="scss">
-html {
-  font-family: 'Noto Sans JP', sans-serif;
+<script>
+import Header from '~/components/Header'
+import Footer from '~/components/Footer'
+
+export default {
+  components: {
+    Header,
+    Footer
+  }
 }
-h1 {
-  color: $MAIN_COLOR_1;
-}
-</style>
+</script>
