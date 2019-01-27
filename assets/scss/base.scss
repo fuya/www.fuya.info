@@ -4,8 +4,21 @@
 body {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: $BASE_FONT_SIZE;
-  color: $FONT_COLOR;
-  background-color: $BACKGROUND_COLOR;
-  line-height: 1.4;
+  color: $GRAY;
+  background-color: $WHITE;
 }
 
+a {
+  &:link, &:visited {
+    color: $DARK_SKY;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline $DARK_SKY;
+  }
+
+  &:active, &:focus {
+    color: $SKY;
+  }
+}

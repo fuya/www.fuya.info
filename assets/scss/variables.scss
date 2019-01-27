@@ -1,5 +1,23 @@
 $BASE_FONT_SIZE: 18px; // 1.0 rem
 
+$WIDTH_L: 1280px;
+$WIDTH_M: 960px;
+$WIDTH_S: 480px;
+
+
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point - 1px) {
+    @content;
+  }
+}
+
+
 $tiny-font-size: 0.6666rem;
 $x-small-font-size: 0.7777rem;
 $small-font-size: 0.8888rem;
@@ -9,12 +27,18 @@ $x-large-font-size: 1.3333rem;
 $huge-font-size: 1.6666rem;
 $x-huge-font-size: 2.3333rem;
 
+$REAL_WHITE: #ffffff;
+$WHITE: #f8fcf8;
+$LIGHT_GRAY: #8888a1;
+$GRAY: #444454;
+$DARK_GRAY: #282838;
+$BLACK: #111121;
+$REAL_BLACK: #000000;
 
-$BACKGROUND_COLOR: #f8fcf8;
-$FONT_COLOR: #444454;
+$DARK_ORANGE: #b26104;
+$ORANGE: #ff8d0c;
+$LIGHT_ORANGE: #ff9926;
+$SKY: #007fb2;
+$LIGHT_SKY: #0cb9ff;
+$DARK_SKY: #035b7e;
 
-$MAIN_COLOR_1: #FF8D0C;
-$MAIN_COLOR_2: #B26104;
-$MAIN_COLOR_3: #FF9926;
-$ACCENT_COLOR_1: #007FB2;
-$ACCENT_COLOR_2: #0CB9FF;
