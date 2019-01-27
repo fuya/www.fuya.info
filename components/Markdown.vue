@@ -13,6 +13,7 @@ export default {
   computed: {
     markdownHTML() {
       return remark()
+        .data('settings', { footnotes: true })
         .use(html)
         .processSync(this.markdown).contents
     }
