@@ -177,5 +177,22 @@ export default {
   img {
     max-width: 100%;
   }
+  code {
+    padding: 0 0.25rem;
+    margin: 0 0.25rem;
+    color: $WHITE;
+    background: $DARK_GRAY;
+    border-radius: 4px;
+  }
+  pre {
+    padding: 2rem;
+    color: $WHITE;
+    background: $DARK_GRAY;
+    border-radius: 32px 4px 32px 4px;
+    code {
+      padding: 0;
+      margin: 0;
+    }
+  }
 }
 </style>
