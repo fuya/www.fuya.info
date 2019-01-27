@@ -38,6 +38,13 @@ export default {
           }`
         }
       ],
+      script: [
+        {
+          async: 'async',
+          src: 'https://platform.twitter.com/widgets.js',
+          charset: 'utf-8'
+        }
+      ],
       meta: [
         {
           hid: 'description',
