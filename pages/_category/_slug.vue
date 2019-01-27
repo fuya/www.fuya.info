@@ -167,5 +167,8 @@ export default {
   h3 {
     margin: 4rem 0 2rem;
   }
+  img {
+    max-width: 100%;
+  }
 }
 </style>
