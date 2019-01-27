@@ -115,18 +115,16 @@ module.exports = {
         })
       ]).then(([posts]) => {
         return [
-          ...posts.items
-            .map(post => [
-              {
-                route: `${post.fields.category}/${post.fields.slug}`,
-                payload: post
-              },
-              {
-                route: `posts/${post.fields.slug}`,
-                payload: post
-              }
-            ])
-            .flat()
+          ...posts.items.map(post => [
+            {
+              route: `${post.fields.category}/${post.fields.slug}`,
+              payload: post
+            },
+            {
+              route: `posts/${post.fields.slug}`,
+              payload: post
+            }
+          ])
         ]
       })
     }
