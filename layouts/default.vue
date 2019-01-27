@@ -29,5 +29,10 @@ export default {
   @include min-screen($WIDTH_M) {
     padding: 0 2rem;
   }
+  @include min-screen($WIDTH_L) {
+    max-width: $WIDTH_L;
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
 }
 </style>
