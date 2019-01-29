@@ -11,11 +11,13 @@ body {
 a {
   &:link, &:visited {
     color: $DARK_SKY;
-    text-decoration: none;
+    text-decoration: underline;
+    transition: color 0.5s ease-in;
   }
 
   &:hover {
-    text-decoration: underline $DARK_SKY;
+    color: $LIGHT_SKY;
+    transition: color 0.1s ease-in;
   }
 
   &:active, &:focus {

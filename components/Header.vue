@@ -48,6 +48,23 @@ export default {}
     @include min-screen($WIDTH_L) {
       max-width: $WIDTH_L + 240px;
     }
+
+    a {
+      &:link {
+        color: $DARK_SKY;
+        text-decoration: none;
+      }
+
+      &:hover {
+        color: $DARK_SKY;
+        text-decoration: underline;
+      }
+
+      &:active,
+      &:focus {
+        color: $SKY;
+      }
+    }
   }
 }
 
