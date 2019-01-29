@@ -32,7 +32,7 @@ export default {
   .footnote-ref {
     position: relative;
     top: -200px;
-    left: -1000px;
+    left: -10000px;
     display: inline-block;
     width: 1.8rem;
     color: transparent;
@@ -42,7 +42,7 @@ export default {
     &:before {
       position: relative;
       top: 200px;
-      left: 1000px;
+      left: 10000px;
       margin: 0 0.2rem;
       font-size: $large-font-size;
       font-weight: bold;
