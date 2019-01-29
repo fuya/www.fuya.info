@@ -17,7 +17,7 @@ export default {
   components: { Markdown },
   head() {
     return {
-      title: this.entry.fields.title + '| Fuya.info'
+      title: this.entry.fields.title + ' | Fuya.info'
     }
   },
   asyncData() {
