@@ -56,20 +56,23 @@ export default {
   display: block;
   padding: 1rem 2rem;
   margin: 2rem 0;
+  color: $DARK_SKY;
   background: $WHITE;
   border: 2px solid $LIGHT_GRAY;
   border-radius: 8px;
-  transition: background 0.2s ease-in;
 
   &:link {
     text-decoration: none;
+    transition: all 0.6s ease-in;
   }
 
   &:hover,
   &:active {
+    color: inherit;
     background: $REAL_WHITE;
     border: 2px solid $GRAY;
     opacity: 0.8;
+    transition: all 0.2s ease-in;
   }
 }
 
