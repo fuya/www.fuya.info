@@ -40,7 +40,7 @@ module.exports = {
         hid: 'alternate',
         rel: 'alternate',
         type: 'application/rss+xml',
-        href: 'https://fuya.info/feed.xml',
+        href: 'https://fuya.info/feed.rss',
         title: 'RSS2.0'
       }
     ]
@@ -145,7 +145,7 @@ module.exports = {
       async create(feed) {
         feed.options = {
           title: 'Fuya.info',
-          link: 'https://fuya.info/feed.xml',
+          link: 'https://fuya.info/feed.rss',
           description: 'Fuya のブログです。日記や技術記事などを書きます。'
         }
         const posts = await client.getEntries({
