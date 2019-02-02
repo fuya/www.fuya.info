@@ -34,6 +34,15 @@ module.exports = {
         name: 'og:image',
         content: 'https://fuya.info/default_og_image.png'
       }
+    ],
+    link: [
+      {
+        hid: 'alternate',
+        rel: 'alternate',
+        type: 'application/rss+xml',
+        href: 'https://fuya.info/feed.xml',
+        title: 'RSS2.0'
+      }
     ]
   },
 
