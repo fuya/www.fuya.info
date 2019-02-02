@@ -1,7 +1,7 @@
 {
-  "name": "next.fuya.info",
+  "name": "Fuya.info",
   "version": "1.0.0",
-  "description": "My ace Nuxt.js project",
+  "description": "Fuya's Website",
   "author": "Fuya",
   "private": true,
   "scripts": {
