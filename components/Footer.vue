@@ -6,7 +6,8 @@
           <nuxt-link to="/">
             Fuya.info
           </nuxt-link>
-        </li>        <li>
+        </li>
+        <li>
           <nuxt-link to="/about-me">
             About
           </nuxt-link>
@@ -51,7 +52,7 @@ export default {}
     display: inline;
     &:not(:last-of-type):after {
       margin: 0 1rem;
-      content: '/';
+      content: '|';
     }
   }
 }
