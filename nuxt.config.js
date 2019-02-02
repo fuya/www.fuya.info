@@ -65,6 +65,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-sass-resources-loader',
+    '@nuxtjs/feed',
     [
       '@nuxtjs/google-analytics',
       {
@@ -128,5 +129,36 @@ module.exports = {
         ]
       })
     }
-  }
+  },
+  feed: [
+    {
+      path: '/feed.rss',
+      async create(feed) {
+        feed.options = {
+          title: 'Fuya.info',
+          link: 'https://fuya.info/feed.xml',
+          description: 'Fuya のブログです。日記や技術記事などを書きます。'
+        }
+        const posts = await client.getEntries({
+          content_type: 'post',
+          order: '-fields.publishAt',
+          limit: 10
+        })
+        posts.items.forEach(post =>
+          feed.addItem({
+            title: post.fields.title,
+            id: post.fields.slug,
+            link: `https://fuya.info/${post.fields.category}/${
+              post.fields.slug
+            }`,
+            description: post.fields.summary,
+            date: new Date(post.fields.publishAt),
+            image: post.fields.ogImage && post.fields.ogImage.fields.file.url
+          })
+        )
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2'
+    }
+  ]
 }
