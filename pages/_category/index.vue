@@ -31,7 +31,8 @@ export default {
     const category = params.category === 'posts' ? undefined : params.category
     const posts = await client.getEntries({
       content_type: 'post',
-      'fields.category': category
+      'fields.category': category,
+      order: '-fields.publishAt'
     })
 
     return {
