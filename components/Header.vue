@@ -6,23 +6,17 @@
           Fuya.info
         </h1>
       </nuxt-link>
-      <nav :class="$style.nav">
-        <nuxt-link to="/about-me">
-          About
-        </nuxt-link>
-        <nuxt-link to="/diary">
-          日記
-        </nuxt-link>
-        <nuxt-link to="/snippets">
-          snippets
-        </nuxt-link>
-      </nav>
+      <Menu design="header" />
     </header>
   </div>
 </template>
 
 <script>
-export default {}
+import Menu from '~/components/Menu'
+
+export default {
+  components: { Menu }
+}
 </script>
 
 <style lang="scss" module>
