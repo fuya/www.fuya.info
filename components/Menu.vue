@@ -3,7 +3,7 @@
     <ul>
       <li>
         <nuxt-link to="/about-me">
-          About
+          About Me
         </nuxt-link>
       </li>
       <li>
