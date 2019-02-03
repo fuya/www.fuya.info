@@ -7,13 +7,13 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/diary">
-          日記
+        <nuxt-link to="/link">
+          リンク
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/snippets">
-          snippets
+        <nuxt-link to="/posts">
+          記事
         </nuxt-link>
       </li>
     </ul>

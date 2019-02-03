@@ -4,9 +4,9 @@
       <span :class="$style.title">
         {{ post.fields.title }}
       </span> 
-      <span :class="$style.category">
+      <nuxt-link :to="{path: './'}" :class="$style.category">
         {{ post.fields.category }}
-      </span>
+      </nuxt-link>
       <span :class="$style.publishAt">
         {{ post.fields.publishAt | formatDate }}
       </span>
@@ -88,7 +88,7 @@ export default {
     }
     const post = posts.items[0]
 
-    if (!['post', post.fields.category].includes(params.category)) {
+    if (!['posts', post.fields.category].includes(params.category)) {
       error({ statusCode: 404, message: 'ページが見つかりません' })
     }
 
@@ -99,7 +99,7 @@ export default {
   validate({ params }) {
     return (
       /^[-0-9a-z_]+$/.test(params.slug) &&
-      ['post', 'diary', 'snippets', 'meetup'].includes(params.category)
+      ['posts', 'diary', 'snippets', 'meetup'].includes(params.category)
     )
   }
 }
@@ -135,6 +135,14 @@ export default {
     background: $DARK_ORANGE;
     border: 1px solid $DARK_ORANGE;
     border-radius: 4px;
+
+    &:link {
+      text-decoration: none;
+    }
+    &:hover,
+    &:active {
+      opacity: 0.7;
+    }
   }
 
   .publishAt {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PostCard v-for="post in posts.items" :key="post.id" :post="post.fields" />
+    <PostCard v-for="post in posts.items" :key="post.id" :post="post.fields" :with-category="withCategory" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ const client = createClient()
 export default {
   head() {
     return {
-      title: `カテゴリ ${this.$route.params.category} | Fuya.info`,
+      title: `${this.pageTitle} | Fuya.info`,
       link: [
         {
           hid: 'cannonical',
@@ -28,7 +28,7 @@ export default {
         post: payload
       }
     }
-    const category = params.category === 'post' ? undefined : params.category
+    const category = params.category === 'posts' ? undefined : params.category
     const posts = await client.getEntries({
       content_type: 'post',
       'fields.category': category
@@ -38,8 +38,18 @@ export default {
       posts
     }
   },
+  computed: {
+    pageTitle: function() {
+      return this.$route.params.category === 'posts'
+        ? '記事一覧'
+        : `カテゴリ ${this.$route.params.category}`
+    },
+    withCategory: function() {
+      return this.$route.params.category === 'posts'
+    }
+  },
   validate({ params }) {
-    return ['post', 'diary', 'snippets', 'meetup'].includes(params.category)
+    return ['posts', 'diary', 'snippets', 'meetup'].includes(params.category)
   }
 }
 </script>
