@@ -16,6 +16,17 @@ export default {
   components: {
     Header,
     Footer
+  },
+  head() {
+    return {
+      script: [
+        {
+          async: 'async',
+          src: 'https://embed.small.chat/T0HH852NSGG43QQWHL.js',
+          charset: 'utf-8'
+        }
+      ]
+    }
   }
 }
 </script>
