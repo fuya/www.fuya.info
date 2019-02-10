@@ -19,6 +19,9 @@ export default {
 .footer {
   margin: 4rem auto 0;
   text-align: center;
+  @include max-screen($WIDTH_M) {
+    margin: 4rem auto;
+  }
 }
 
 .copyRight {

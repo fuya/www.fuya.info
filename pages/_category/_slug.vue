@@ -109,6 +109,9 @@ export default {
 .meta {
   position: sticky;
   top: $header-height;
+  @include max-screen($WIDTH_S) {
+    top: $header-height / 2;
+  }
   z-index: 2;
   display: flex;
   align-items: center;
@@ -172,15 +175,31 @@ export default {
   }
   h1 {
     margin: 5rem 0 2rem;
+    @include max-screen($WIDTH_S) {
+      margin: 3rem 0 1rem;
+      font-size: $huge-font-size;
+    }
   }
   h2 {
     position: sticky;
-    top: 80px;
+    top: $header-height + 26px;
     margin: 5rem 0 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     background: $WHITE;
+    @include max-screen($WIDTH_S) {
+      top: $header-height / 2 + 26px;
+      margin: 3rem 0 1rem;
+      font-size: $x-large-font-size;
+    }
   }
   h3 {
     margin: 4rem 0 2rem;
+    @include max-screen($WIDTH_S) {
+      margin: 2rem 0 1rem;
+      font-size: $large-font-size;
+    }
   }
   img {
     max-width: 100%;

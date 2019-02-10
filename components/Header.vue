@@ -27,6 +27,9 @@ export default {
   height: $header-height - 1px;
   background: $WHITE;
   border-bottom: 1px solid $LIGHT_GRAY;
+  @include max-screen($WIDTH_S) {
+    height: $header-height / 2;
+  }
   @include min-screen($WIDTH_S) {
     padding: 0 1rem;
   }
@@ -65,13 +68,9 @@ export default {
 .siteName {
   flex-shrink: 0;
   font-size: $x-large-font-size;
-}
-
-.nav {
-  display: flex;
-  flex-shrink: 1;
-  > a {
-    margin: 0 0.5rem;
+  @include max-screen($WIDTH_S) {
+    margin: 0.2rem 0;
+    font-size: $small-font-size;
   }
 }
 </style>

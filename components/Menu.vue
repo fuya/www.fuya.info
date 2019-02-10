@@ -43,6 +43,10 @@ export default {
       a {
         display: block;
         padding: 1rem;
+        @include max-screen($WIDTH_S) {
+          padding: 0 0.2rem;
+          font-size: $tiny-font-size;
+        }
       }
       &:not(:last-of-type):after {
         margin: 0 1rem;
