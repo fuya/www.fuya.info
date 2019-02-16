@@ -125,7 +125,7 @@ module.exports = {
         })
       ]).then(([posts]) => {
         return [
-          ...posts.items.map(post => [
+          posts.items.map(post => [
             {
               route: `${post.fields.category}/${post.fields.slug}`,
               payload: post
@@ -134,8 +134,9 @@ module.exports = {
               route: `posts/${post.fields.slug}`,
               payload: post
             }
-          ])
-        ]
+          ]),
+          ['/posts', '/diary', '/snippets', '/meetup']
+        ].flat(Infinity)
       })
     }
   },
