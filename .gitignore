@@ -85,3 +85,4 @@ sw.*
 
 # generated RSS
 static/feed.rss
+static/sitemap.xml
