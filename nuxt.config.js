@@ -75,6 +75,7 @@ module.exports = {
     '@nuxtjs/pwa',
     'nuxt-sass-resources-loader',
     '@nuxtjs/feed',
+    '@nuxtjs/sitemap',
     [
       '@nuxtjs/google-analytics',
       {
@@ -138,6 +139,27 @@ module.exports = {
           ['/posts', '/diary', '/snippets', '/meetup']
         ].flat(Infinity)
       })
+    }
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://fuya.info',
+    cacheTime: 1000 * 60 * 60 * 3,
+    generate: true,
+    routes() {
+      return client
+        .getEntries({
+          content_type: 'post'
+        })
+        .then(posts =>
+          [
+            posts.items.map(post => [
+              `/${post.fields.category}/${post.fields.slug}`,
+              `/posts/${post.fields.slug}`
+            ]),
+            ['/posts', '/diary', '/snippets', '/meetup']
+          ].flat(Infinity)
+        )
     }
   },
   feed: [
