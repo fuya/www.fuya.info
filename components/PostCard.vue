@@ -1,23 +1,27 @@
 <template>
-  <nuxt-link :to="path" :class="$style.card">
-    <div :class="$style.title">
+  <div :class="$style.card" @click="jumpTo">
+    <nuxt-link :to="path" :class="$style.title">
       {{ post.title }}
-    </div>
+    </nuxt-link>
     <div :class="$style.summary">
       {{ post.summary }}
     </div>
     <div :class="$style.meta">
-      <span v-if="withCategory" :class="$style.category">
-        {{ post.category }}
+      <span v-if="withCategory" :class="$style.category" @click.stop>
+        <nuxt-link :to="categoryPath">
+          {{ post.category }}
+        </nuxt-link>
       </span>
       <span :class="$style.publishAt">
         {{ post.publishAt | formatDate }}
       </span>
-      <span v-for="(tag, i) in post.tag" :key="i" :class="$style.tag">
-        {{ tag }}
+      <span v-for="(tag, i) in post.tag" :key="i" :class="$style.tag" @click.stop>
+        <nuxt-link :to="tagPath(tag)">
+          {{ tag }}
+        </nuxt-link>
       </span>
     </div>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>
@@ -46,6 +50,27 @@ export default {
           slug: this.post.slug
         }
       }
+    },
+    categoryPath() {
+      return {
+        name: 'category',
+        params: {
+          category: this.post.category
+        }
+      }
+    },
+    tagPath() {
+      return tag => ({
+        name: 'tags-tag',
+        params: {
+          tag: tag
+        }
+      })
+    }
+  },
+  methods: {
+    jumpTo() {
+      this.$router.push(this.path)
     }
   }
 }
@@ -69,9 +94,10 @@ export default {
   &:hover,
   &:active {
     color: inherit;
+    cursor: pointer;
     background: $REAL_WHITE;
     border: 2px solid $GRAY;
-    opacity: 0.8;
+    opacity: 0.9;
     transition: all 0.2s ease-in;
   }
 }
@@ -80,7 +106,10 @@ export default {
   margin-bottom: 1rem;
   font-size: $x-large-font-size;
   font-weight: bold;
-  color: $DARK_ORANGE;
+  a {
+    color: $DARK_ORANGE;
+    text-decoration: none;
+  }
 }
 
 .summary {
@@ -101,12 +130,18 @@ export default {
     padding: 0.125rem 0.5rem;
     margin-right: 0.2rem;
     font-weight: bold;
-    color: $WHITE;
     text-transform: capitalize;
     white-space: nowrap;
     background: $DARK_ORANGE;
     border: 1px solid $DARK_ORANGE;
     border-radius: 4px;
+    &:hover {
+      opacity: 0.7;
+    }
+    a {
+      color: $WHITE;
+      text-decoration: none;
+    }
   }
 
   .publishAt {
@@ -118,10 +153,16 @@ export default {
   .tag {
     padding: 0.125rem 0.25rem;
     margin-right: 0.2rem;
-    color: $DARK_ORANGE;
     white-space: nowrap;
     border: 1px solid $DARK_ORANGE;
     border-radius: 4px;
+    &:hover {
+      opacity: 0.7;
+    }
+    a {
+      color: $DARK_ORANGE;
+      text-decoration: none;
+    }
   }
 }
 </style>

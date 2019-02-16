@@ -10,9 +10,9 @@
       <span :class="$style.publishAt">
         {{ post.fields.publishAt | formatDate }}
       </span>
-      <span v-for="(tag, i) in post.fields.tag" :key="i" :class="$style.tag">
+      <nuxt-link v-for="(tag, i) in post.fields.tag" :key="i" :to="tagPath(tag)" :class="$style.tag">
         {{ tag }}
-      </span>
+      </nuxt-link>
     </div>
     <Markdown :class="$style.post" :markdown="post.fields.bodyMd" />
   </div>
@@ -72,6 +72,16 @@ export default {
     }
   },
   components: { Markdown },
+  computed: {
+    tagPath() {
+      return tag => ({
+        name: 'tags-tag',
+        params: {
+          tag: tag
+        }
+      })
+    }
+  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
@@ -158,9 +168,13 @@ export default {
     padding: 0.125rem 0.25rem;
     margin-right: 0.2rem;
     color: $DARK_ORANGE;
+    text-decoration: none;
     white-space: nowrap;
     border: 1px solid $DARK_ORANGE;
     border-radius: 4px;
+    &:hover {
+      opacity: 0.7;
+    }
     @include max-screen($WIDTH_M) {
       display: none;
     }

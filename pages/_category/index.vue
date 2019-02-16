@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h1 v-if="!withCategory">
+      {{ $route.params.category }} の記事
+    </h1>
     <PostCard v-for="post in posts.items" :key="post.id" :post="post.fields" :with-category="withCategory" />
   </div>
 </template>
