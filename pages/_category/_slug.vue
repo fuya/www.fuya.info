@@ -196,14 +196,15 @@ export default {
   }
   h2 {
     position: sticky;
-    top: $header-height + 26px;
+    top: $header-height + 32px;
+    z-index: 100;
     margin: 5rem 0 2rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     background: $WHITE;
     @include max-screen($WIDTH_S) {
-      top: $header-height / 2 + 26px;
+      top: $header-height / 2 + 32px;
       margin: 3rem 0 1rem;
       font-size: $x-large-font-size;
     }
