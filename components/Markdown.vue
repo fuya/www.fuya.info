@@ -10,12 +10,12 @@ export default {
       required: true
     }
   },
-  computed: {
-    markdownHTML() {
-      return remark()
+  data() {
+    return {
+      markdownHTML: (this.markdownHTML = remark()
         .data('settings', { footnotes: true })
         .use(html)
-        .processSync(this.markdown).contents
+        .processSync(this.markdown).contents)
     }
   }
 }
