@@ -43,6 +43,11 @@ export default {
           async: 'async',
           src: 'https://platform.twitter.com/widgets.js',
           charset: 'utf-8'
+        },
+        {
+          async: 'async',
+          src: 'https://speakerdeck.com/assets/embed.js',
+          charset: 'utf-8'
         }
       ],
       meta: [
