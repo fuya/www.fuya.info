@@ -21,18 +21,27 @@ module.exports = {
       {
         hid: 'og:title',
         name: 'og:title',
+        property: 'og:title',
         content: `Fuya.info`
       },
       {
         hid: 'og:description',
         name: 'og:description',
+        property: 'og:description',
         content:
           'Fuya.info は Fuyaのウェブサイトです。いろいろなことを書きます。'
       },
       {
         hid: 'og:image',
         name: 'og:image',
+        property: 'og:image',
         content: 'https://fuya.info/default_og_image.png'
+      },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        property: 'twitter:site',
+        content: '@_fuya'
       }
     ],
     link: [

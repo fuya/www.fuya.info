@@ -59,17 +59,20 @@ export default {
         {
           hid: 'og:title',
           name: 'og:title',
+          property: 'og:title',
           content: `${this.post.fields.title} | Fuya.info`
         },
         {
           hid: 'og:description',
           name: 'og:description',
-          content: `${this.post.fields.sumally}`
+          property: 'og:description',
+          content: `${this.post.fields.sumally || this.post.fields.title}`
         },
         this.post.fields.ogImage
           ? {
               hid: 'og:image',
               name: 'og:image',
+              property: 'og:image',
               content: `${this.post.fields.ogImage.fields.file.url}`
             }
           : {}
