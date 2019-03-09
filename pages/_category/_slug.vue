@@ -54,7 +54,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `${this.post.fields.sumally}`
+          content: `${this.post.fields.summary}`
         },
         {
           hid: 'og:title',
@@ -66,7 +66,7 @@ export default {
           hid: 'og:description',
           name: 'og:description',
           property: 'og:description',
-          content: `${this.post.fields.sumally || this.post.fields.title}`
+          content: `${this.post.fields.summary || this.post.fields.title}`
         },
         this.post.fields.ogImage
           ? {
