@@ -137,15 +137,15 @@ module.exports = {
         return [
           posts.items.map(post => [
             {
-              route: `${post.fields.category}/${post.fields.slug}`,
+              route: `${post.fields.category}/${post.fields.slug}/`,
               payload: post
             },
             {
-              route: `posts/${post.fields.slug}`,
+              route: `posts/${post.fields.slug}/`,
               payload: post
             }
           ]),
-          ['/posts', '/diary', '/snippets', '/meetup']
+          ['/posts/', '/diary/', '/snippets/', '/meetup/']
         ].flat(Infinity)
       })
     }
@@ -163,10 +163,10 @@ module.exports = {
         .then(posts =>
           [
             posts.items.map(post => [
-              `/${post.fields.category}/${post.fields.slug}`,
-              `/posts/${post.fields.slug}`
+              `/${post.fields.category}/${post.fields.slug}/`,
+              `/posts/${post.fields.slug}/`
             ]),
-            ['/posts', '/diary', '/snippets', '/meetup']
+            ['/posts/', '/diary/', '/snippets/', '/meetup/']
           ].flat(Infinity)
         )
     }
@@ -191,7 +191,7 @@ module.exports = {
             id: post.fields.slug,
             link: `https://fuya.info/${post.fields.category}/${
               post.fields.slug
-            }`,
+            }/`,
             description: post.fields.summary,
             date: new Date(post.fields.publishAt),
             image: post.fields.ogImage && post.fields.ogImage.fields.file.url

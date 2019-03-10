@@ -19,7 +19,7 @@ export default {
       link: [
         {
           hid: 'cannonical',
-          href: `https://fuya.info/${this.$route.params.category}`
+          href: `https://fuya.info/${this.$route.params.category}/`
         }
       ]
     }

@@ -35,7 +35,7 @@ export default {
           hid: 'cannonical',
           href: `https://fuya.info/${this.post.fields.category}/${
             this.post.fields.slug
-          }`
+          }/`
         }
       ],
       script: [
