@@ -12,11 +12,14 @@ export default {
   },
   data() {
     return {
-      markdownHTML: (this.markdownHTML = remark()
-        .data('settings', { footnotes: true })
-        .use(html)
-        .processSync(this.markdown).contents)
+      markdownHTML: ''
     }
+  },
+  created() {
+    this.markdownHTML = remark()
+      .data('settings', { footnotes: true })
+      .use(html)
+      .processSync(this.markdown).contents
   }
 }
 </script>
