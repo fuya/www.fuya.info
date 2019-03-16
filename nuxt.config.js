@@ -64,7 +64,9 @@ module.exports = {
   ** Global CSS
   */
   css: ['normalize.css', '~/assets/scss/base.scss'],
-  sassResources: ['~/assets/scss/variables.scss'],
+  styleResources: {
+    sass:  ['~/assets/scss/variables.scss'],
+  },
 
   router: {
     middleware: 'redirect_endwith_dothtml'
@@ -82,7 +84,7 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    'nuxt-sass-resources-loader',
+    '@nuxtjs/style-resources',
     '@nuxtjs/feed',
     '@nuxtjs/sitemap',
     [
@@ -108,10 +110,11 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      ctx.loaders.cssModules.localIdentName =
-        process.env.NODE_ENV === 'development'
-          ? '[path]--[local]---[hash:base64:7]'
-          : '_[hash:base64:7]'
+      // ctx.loaders.cssModules.localIdentName =
+      //   process.env.NODE_ENV === 'development'
+      //     ? '[path]--[local]---[hash:base64:7]'
+      //     : '_[hash:base64:7]'
+      // https://github.com/nuxt/nuxt.js/issues/5030
       ctx.loaders.cssModules.camelCase = true
 
       // Run ESLint on save
