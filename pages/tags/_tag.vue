@@ -1,7 +1,12 @@
 <template>
   <div>
     <h1>タグ 「{{ $route.params.tag }}」 を含む記事</h1>
-    <PostCard v-for="post in posts.items" :key="post.id" :post="post.fields" with-category />
+    <PostCard
+      v-for="post in posts.items"
+      :key="post.id"
+      :post="post.fields"
+      with-category
+    />
   </div>
 </template>
 
@@ -23,6 +28,11 @@ export default {
     }
   },
   components: { PostCard },
+  computed: {
+    pageTitle: function() {
+      return `タグ 「${this.$route.params.tag}」を含む記事`
+    }
+  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
@@ -37,11 +47,6 @@ export default {
 
     return {
       posts
-    }
-  },
-  computed: {
-    pageTitle: function() {
-      return `タグ 「${this.$route.params.tag}」を含む記事`
     }
   }
 }

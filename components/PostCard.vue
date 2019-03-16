@@ -15,7 +15,12 @@
       <span :class="$style.publishAt">
         {{ post.publishAt | formatDate }}
       </span>
-      <span v-for="(tag, i) in post.tag" :key="i" :class="$style.tag" @click.stop>
+      <span
+        v-for="(tag, i) in post.tag"
+        :key="i"
+        :class="$style.tag"
+        @click.stop
+      >
         <nuxt-link :to="tagPath(tag)">
           {{ tag }}
         </nuxt-link>

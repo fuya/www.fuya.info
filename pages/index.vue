@@ -5,7 +5,12 @@
     </section>
     <section>
       <h1>最近の投稿</h1>
-      <PostCard v-for="(post, i) in posts" :key="i" :post="post.fields" with-category />
+      <PostCard
+        v-for="(post, i) in posts"
+        :key="i"
+        :post="post.fields"
+        with-category
+      />
     </section>
   </div>
 </template>

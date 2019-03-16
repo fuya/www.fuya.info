@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h1 v-if="!withCategory">
-      {{ $route.params.category }} の記事
-    </h1>
-    <PostCard v-for="post in posts.items" :key="post.id" :post="post.fields" :with-category="withCategory" />
+    <h1 v-if="!withCategory">{{ $route.params.category }} の記事</h1>
+    <PostCard
+      v-for="post in posts.items"
+      :key="post.id"
+      :post="post.fields"
+      :with-category="withCategory"
+    />
   </div>
 </template>
 
@@ -25,6 +28,16 @@ export default {
     }
   },
   components: { PostCard },
+  computed: {
+    pageTitle: function() {
+      return this.$route.params.category === 'posts'
+        ? '記事一覧'
+        : `カテゴリ ${this.$route.params.category}`
+    },
+    withCategory: function() {
+      return this.$route.params.category === 'posts'
+    }
+  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
@@ -40,16 +53,6 @@ export default {
 
     return {
       posts
-    }
-  },
-  computed: {
-    pageTitle: function() {
-      return this.$route.params.category === 'posts'
-        ? '記事一覧'
-        : `カテゴリ ${this.$route.params.category}`
-    },
-    withCategory: function() {
-      return this.$route.params.category === 'posts'
     }
   },
   validate({ params }) {

@@ -3,14 +3,19 @@
     <div :class="$style.meta">
       <span :class="$style.title">
         {{ post.fields.title }}
-      </span> 
-      <nuxt-link :to="{path: './'}" :class="$style.category">
+      </span>
+      <nuxt-link :to="{ path: './' }" :class="$style.category">
         {{ post.fields.category }}
       </nuxt-link>
       <span :class="$style.publishAt">
         {{ post.fields.publishAt | formatDate }}
       </span>
-      <nuxt-link v-for="(tag, i) in post.fields.tag" :key="i" :to="tagPath(tag)" :class="$style.tag">
+      <nuxt-link
+        v-for="(tag, i) in post.fields.tag"
+        :key="i"
+        :to="tagPath(tag)"
+        :class="$style.tag"
+      >
         {{ tag }}
       </nuxt-link>
     </div>
