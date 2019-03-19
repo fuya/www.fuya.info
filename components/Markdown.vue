@@ -10,16 +10,21 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      markdownHTML: ''
+  computed: {
+    markdownHTML() {
+      return remark()
+        .data('settings', { footnotes: true })
+        .use(html)
+        .processSync(this.markdown).contents
     }
   },
   created() {
-    this.markdownHTML = remark()
-      .data('settings', { footnotes: true })
-      .use(html)
-      .processSync(this.markdown).contents
+    setTimeout(() => {
+      try {
+        // eslint-disable-next-line no-undef
+        twttr.widgets.load()
+      } catch (e) {}
+    }, 20)
   }
 }
 </script>
