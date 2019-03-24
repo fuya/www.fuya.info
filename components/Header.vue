@@ -3,7 +3,11 @@
     <header :class="$style.inner">
       <nuxt-link to="/">
         <h1 :class="$style.siteName">
-          Fuya.info
+          <img
+            :class="$style.image"
+            src="~assets/images/fi480.png"
+            alt="Fuya.info"
+          />
         </h1>
       </nuxt-link>
       <Menu design="header" />
@@ -66,11 +70,20 @@ export default {
 }
 
 .siteName {
+  padding: 0;
+  margin: 0;
   flex-shrink: 0;
   font-size: $x-large-font-size;
   @include max-screen($WIDTH_S) {
     margin: 0.2rem 0;
     font-size: $small-font-size;
+  }
+}
+
+.image {
+  width: 60px;
+  @include min-screen($WIDTH_S) {
+    width: 120px;
   }
 }
 </style>
