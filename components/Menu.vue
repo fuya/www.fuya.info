@@ -1,8 +1,18 @@
 <template>
   <nav :class="[$style[design]]">
     <ul>
+      <li v-if="design == 'footer'">
+        <nuxt-link to="/">
+          Index
+        </nuxt-link>
+      </li>
+      <li v-if="design == 'footer'">
+        <nuxt-link to="/old-valley">
+          おしごと
+        </nuxt-link>
+      </li>
       <li>
-        <nuxt-link to="/about-me">
+        <nuxt-link to="/#about">
           About Me
         </nuxt-link>
       </li>
@@ -63,7 +73,7 @@ export default {
     margin: 0;
     list-style-type: none;
     li {
-      display: inline;
+      display: inline-block;
       &:not(:last-of-type):after {
         margin: 0 1rem;
         content: '|';

@@ -1,5 +1,8 @@
 <template>
-  <div :class="$style.card" @click="jumpTo">
+  <div
+    :class="[$style.card, { [$style.transparent]: transparent }]"
+    @click="jumpTo"
+  >
     <nuxt-link :to="path" :class="$style.title">
       {{ post.title }}
     </nuxt-link>
@@ -39,6 +42,11 @@ export default {
       type: Object,
       required: true,
       validate: post => post.title
+    },
+    transparent: {
+      type: Boolean,
+      required: false,
+      default: false
     },
     withCategory: {
       type: Boolean,
@@ -90,6 +98,14 @@ export default {
   background: $WHITE;
   border: 2px solid $LIGHT_GRAY;
   border-radius: 8px;
+
+  &.transparent {
+    background: rgba($WHITE, 0.4);
+    &:hover,
+    &:active {
+      background: rgba($REAL_WHITE, 0.8);
+    }
+  }
 
   &:link {
     text-decoration: none;
@@ -157,7 +173,7 @@ export default {
 
   .tag {
     padding: 0.125rem 0.25rem;
-    margin-right: 0.2rem;
+    margin: 0.2rem 0.2rem 0.2rem 0;
     white-space: nowrap;
     border: 1px solid $DARK_ORANGE;
     border-radius: 4px;
