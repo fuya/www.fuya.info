@@ -29,7 +29,7 @@ export default {
   },
   components: { PostCard },
   computed: {
-    pageTitle: function() {
+    pageTitle() {
       return `タグ 「${this.$route.params.tag}」を含む記事`
     }
   },

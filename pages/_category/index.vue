@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 v-if="!withCategory">{{ $route.params.category }} の記事</h1>
+    <h1 v-if="!withCategory">
+      {{ `${$route.params.category}の記事` }}
+    </h1>
     <PostCard
       v-for="post in posts.items"
       :key="post.id"
@@ -29,12 +31,12 @@ export default {
   },
   components: { PostCard },
   computed: {
-    pageTitle: function() {
+    pageTitle() {
       return this.$route.params.category === 'posts'
         ? '記事一覧'
         : `カテゴリ ${this.$route.params.category}`
     },
-    withCategory: function() {
+    withCategory() {
       return this.$route.params.category === 'posts'
     }
   },

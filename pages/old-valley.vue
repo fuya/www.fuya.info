@@ -22,7 +22,7 @@ export default {
   },
   asyncData() {
     return client.getEntry('6R2ONst8fLaqdjlNpxi2Fj').then(entry => ({
-      entry: entry
+      entry
     }))
   }
 }

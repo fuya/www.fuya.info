@@ -90,7 +90,7 @@ export default {
       return tag => ({
         name: 'tags-tag',
         params: {
-          tag: tag
+          tag
         }
       })
     }
