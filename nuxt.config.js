@@ -5,8 +5,8 @@ module.exports = {
   mode: 'universal',
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: 'Fuya.info',
     meta: [
@@ -56,16 +56,16 @@ module.exports = {
   },
 
   /*
-  ** Customize the progress-bar color
-  */
+   ** Customize the progress-bar color
+   */
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
+   ** Global CSS
+   */
   css: ['normalize.css', '~/assets/scss/base.scss'],
   styleResources: {
-    sass:  ['~/assets/scss/variables.scss'],
+    sass: ['~/assets/scss/variables.scss']
   },
 
   router: {
@@ -73,13 +73,13 @@ module.exports = {
   },
 
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
@@ -95,20 +95,20 @@ module.exports = {
     ]
   ],
   /*
-  ** Axios module configuration
-  */
+   ** Axios module configuration
+   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     extractCSS: true,
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
     extend(config, ctx) {
       // ctx.loaders.cssModules.localIdentName =
       //   process.env.NODE_ENV === 'development'
@@ -192,9 +192,7 @@ module.exports = {
           feed.addItem({
             title: post.fields.title,
             id: post.fields.slug,
-            link: `https://fuya.info/${post.fields.category}/${
-              post.fields.slug
-            }/`,
+            link: `https://fuya.info/${post.fields.category}/${post.fields.slug}/`,
             description: post.fields.summary,
             date: new Date(post.fields.publishAt),
             image: post.fields.ogImage && post.fields.ogImage.fields.file.url

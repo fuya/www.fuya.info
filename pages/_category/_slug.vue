@@ -38,9 +38,7 @@ export default {
       link: [
         {
           hid: 'cannonical',
-          href: `https://fuya.info/${this.post.fields.category}/${
-            this.post.fields.slug
-          }/`
+          href: `https://fuya.info/${this.post.fields.category}/${this.post.fields.slug}/`
         }
       ],
       script: [
