@@ -9,7 +9,7 @@
       </p>
       <p>
         東京都の会社員ですが、フリーでの仕事も募集しています。
-        <a href="/old-varrey">どうぞ</a>
+        <a href="/old-valley">どうぞ</a>
       </p>
       <p>
         2009年の大学入学以来、PHP、HTML、CSS、Ruby on
