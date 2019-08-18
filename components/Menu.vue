@@ -12,11 +12,6 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/#about">
-          About Me
-        </nuxt-link>
-      </li>
-      <li>
         <nuxt-link to="/link">
           リンク
         </nuxt-link>
