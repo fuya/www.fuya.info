@@ -65,7 +65,7 @@ module.exports = {
    */
   css: ['normalize.css', '~/assets/scss/base.scss'],
   styleResources: {
-    sass: ['~/assets/scss/variables.scss']
+    scss: ['~/assets/scss/variables.scss']
   },
 
   router: {

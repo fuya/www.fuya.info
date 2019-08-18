@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.header">
     <header :class="$style.inner">
-      <nuxt-link to="/top">
+      <nuxt-link to="/">
         <h1 :class="$style.siteName">
           <img
             :class="$style.image"

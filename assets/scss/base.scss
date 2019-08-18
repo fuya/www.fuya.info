@@ -4,7 +4,7 @@
 body {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: $BASE_FONT_SIZE;
-  line-height: 1.4;
+  line-height: 2;
   color: $GRAY;
   background-color: $WHITE;
 }
@@ -24,4 +24,8 @@ a {
   &:active, &:focus {
     color: $SKY;
   }
+}
+
+p {
+  margin: 2rem 0;
 }

@@ -193,7 +193,7 @@ export default {
 }
 
 .post {
-  line-height: 2;
+  line-height: 2.2;
 
   p {
     margin: 2rem 0;
@@ -207,7 +207,7 @@ export default {
   }
   h2 {
     position: sticky;
-    top: $header-height + 32px;
+    top: $header-height + $post-meta-stickey-height;
     z-index: 100;
     margin: 5rem 0 2rem;
     overflow: hidden;
@@ -215,7 +215,7 @@ export default {
     white-space: nowrap;
     background: $WHITE;
     @include max-screen($WIDTH_S) {
-      top: $header-height / 2 + 32px;
+      top: $header-height / 2 + $post-meta-stickey-height;
       margin: 3rem 0 1rem;
       font-size: $x-large-font-size;
     }
