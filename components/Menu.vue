@@ -49,7 +49,7 @@ export default {
         display: block;
         padding: 1rem;
         @include max-screen($WIDTH_S) {
-          padding: 0 0.2rem;
+          padding: 0.5rem;
           font-size: $tiny-font-size;
         }
       }
