@@ -144,15 +144,15 @@ export default {
     max-width: 320px;
     margin-right: 0.2rem;
     overflow: hidden;
-    font-weight: bold;
+    font-size: $large-font-size;
+    font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .category {
-    padding: 0.125rem 0.5rem;
-    margin-right: 0.2rem;
-    font-weight: bold;
+    padding: 0 1rem;
+    margin: 0 0.5rem;
     color: $WHITE;
     text-transform: capitalize;
     white-space: nowrap;
@@ -170,18 +170,15 @@ export default {
   }
 
   .publishAt {
-    margin-right: 0.2rem;
-    font-weight: bold;
+    margin-right: 0.5rem;
     white-space: nowrap;
   }
 
   .tag {
-    padding: 0.125rem 0.25rem;
-    margin-right: 0.2rem;
+    margin-right: 0.5rem;
     color: $DARK_ORANGE;
     text-decoration: none;
     white-space: nowrap;
-    border: 1px solid $DARK_ORANGE;
     border-radius: 4px;
     &:hover {
       opacity: 0.7;

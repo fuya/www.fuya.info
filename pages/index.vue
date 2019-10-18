@@ -1,8 +1,9 @@
 <template>
   <div>
     <section>
-      <h1>Fuya.info</h1>
-      <h2>こんにちは! Fuya.infoへようこそ</h2>
+      <h1 :class="$style.sectionTitle">
+        Fuya.info
+      </h1>
       <p>
         Fuya (Fumiya FURUYA) は、Front-End Web Developer
         (Webフロントエンド開発者)を名乗っています。
@@ -19,7 +20,9 @@
       </p>
     </section>
     <section>
-      <h1>最近の投稿</h1>
+      <h1 :class="$style.sectionTitle">
+        最近の投稿
+      </h1>
       <PostCard
         v-for="(post, i) in posts"
         :key="i"
@@ -44,7 +47,7 @@ export default {
       client.getEntries({
         content_type: 'post',
         order: '-fields.publishAt',
-        limit: 5
+        limit: 10
       })
     ]).then(([posts]) => {
       return {
@@ -54,3 +57,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" module>
+.sectionTitle {
+  font-size: $x-huge-font-size;
+  font-weight: 300;
+}
+</style>

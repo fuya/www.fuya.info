@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&subset=japanese');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,500,700&display=swap&subset=japanese');
 @import './variables.scss';
 
 body {
@@ -6,6 +6,7 @@ body {
   font-size: $BASE_FONT_SIZE;
   line-height: 2;
   color: $GRAY;
+  font-weight: 400;
   background-color: $WHITE;
 }
 
@@ -28,4 +29,8 @@ a {
 
 p {
   margin: 2rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
 }
