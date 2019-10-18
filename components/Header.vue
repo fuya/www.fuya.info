@@ -25,9 +25,6 @@ export default {
 
 <style lang="scss" module>
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 3;
   height: $header-height - 1px;
   background: $WHITE;
   border-bottom: 1px solid $LIGHT_GRAY;
