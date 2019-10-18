@@ -25,9 +25,8 @@ export default {
 
 <style lang="scss" module>
 .header {
-  height: $header-height - 1px;
+  height: $header-height;
   background: $WHITE;
-  border-bottom: 1px solid $LIGHT_GRAY;
   @include max-screen($WIDTH_S) {
     height: $header-height / 2;
   }
@@ -44,7 +43,7 @@ export default {
     width: 100%;
     margin: 0 auto;
     @include min-screen($WIDTH_L) {
-      max-width: $WIDTH_L + 240px;
+      max-width: $WIDTH_L;
     }
 
     a {
