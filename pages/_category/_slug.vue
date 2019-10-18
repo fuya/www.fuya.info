@@ -1,9 +1,15 @@
 <template>
   <div>
-    <div :class="$style.meta">
-      <span :class="$style.title">
-        {{ post.fields.title }}
-      </span>
+    <div v-scroll="handleScroll" :class="$style.meta">
+      <transition
+        :enter-class="$style.enterFrom"
+        :enter-active-class="$style.enterActive"
+        :enter-to-class="$style.enterTo"
+      >
+        <span v-if="showTitle" :class="$style.title" :title="post.fields.title">
+          {{ post.fields.title }}
+        </span>
+      </transition>
       <nuxt-link :to="{ path: './' }" :class="$style.category">
         {{ post.fields.category }}
       </nuxt-link>
@@ -78,6 +84,11 @@ export default {
     }
   },
   components: { Markdown },
+  data() {
+    return {
+      showTitle: false
+    }
+  },
   computed: {
     tagPath() {
       return tag => ({
@@ -117,6 +128,11 @@ export default {
       /^[-0-9a-z_]+$/.test(params.slug) &&
       ['posts', 'diary', 'snippets', 'meetup'].includes(params.category)
     )
+  },
+  methods: {
+    handleScroll(t) {
+      this.showTitle = window.scrollY > 300
+    }
   }
 }
 </script>
@@ -124,25 +140,24 @@ export default {
 <style lang="scss" module>
 .meta {
   position: sticky;
-  top: $header-height;
-  @include max-screen($WIDTH_S) {
-    top: $header-height / 2;
-  }
+  top: 0;
   z-index: 2;
   display: flex;
   align-items: center;
+  padding: 2px 0;
   height: $post-meta-stickey-height;
   font-size: $small-font-size;
   background: $WHITE;
 
   .title {
-    max-width: 320px;
+    max-width: 340px;
     margin-right: 0.2rem;
     overflow: hidden;
     font-size: $large-font-size;
     font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
+    display: inline-block;
   }
 
   .category {
@@ -199,7 +214,7 @@ export default {
   }
   h2 {
     position: sticky;
-    top: $header-height + $post-meta-stickey-height;
+    top: $post-meta-stickey-height;
     z-index: 100;
     margin: 5rem 0 2rem;
     overflow: hidden;
@@ -207,7 +222,6 @@ export default {
     white-space: nowrap;
     background: $WHITE;
     @include max-screen($WIDTH_S) {
-      top: $header-height / 2 + $post-meta-stickey-height;
       margin: 3rem 0 1rem;
       font-size: $x-large-font-size;
     }
@@ -239,5 +253,20 @@ export default {
       margin: 0;
     }
   }
+}
+
+.enterActive {
+  transition: 0.2s 0.3s opacity ease-out,
+    0.5s width cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.enterFrom {
+  width: 0;
+  opacity: 0;
+}
+
+.enterTo {
+  opacity: 0.8;
+  width: 240px;
 }
 </style>
