@@ -1,15 +1,5 @@
 <template>
   <footer :class="$style.footer">
-    <a
-      href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-      class="twitter-share-button"
-      data-size="large"
-      data-related="_fuya"
-      data-lang="ja"
-      data-show-count="false"
-    >
-      Tweet
-    </a>
     <Menu design="footer" />
     <small :class="$style.copyRight">
       Copyright &copy; 2019 Fuya.

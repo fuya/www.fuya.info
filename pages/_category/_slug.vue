@@ -26,6 +26,16 @@
       </nuxt-link>
     </div>
     <Markdown :class="$style.post" :markdown="post.fields.bodyMd" />
+    <a
+      href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+      class="twitter-share-button"
+      data-size="large"
+      data-related="_fuya"
+      data-lang="ja"
+      data-show-count="false"
+    >
+      Tweet
+    </a>
   </div>
 </template>
 
