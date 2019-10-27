@@ -30,6 +30,10 @@
         with-category
       />
     </section>
+    <small :class="$style.analytics">
+      ※このサイトでは、Google Analytics
+      を利用し、cookieを用いた情報収集をしています
+    </small>
   </div>
 </template>
 
@@ -62,5 +66,9 @@ export default {
 .sectionTitle {
   font-size: $x-huge-font-size;
   font-weight: 300;
+}
+
+.analytics {
+  font-size: $x-small-font-size;
 }
 </style>
