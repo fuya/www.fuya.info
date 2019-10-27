@@ -28,6 +28,7 @@
     "normalize.css": "^8.0.1",
     "nuxt": "^2.8.1",
     "remark": "^11.0.1",
+    "remark-highlight.js": "^5.1.1",
     "remark-html": "^10.0.0",
     "sass-loader": "^7.2.0"
   },

@@ -1,7 +1,10 @@
 <script>
+import 'highlight.js/styles/dark.css'
+
 /* eslint-disable vue/no-v-html */
 import remark from 'remark'
 import html from 'remark-html'
+import highlightjs from 'remark-highlight.js'
 
 export default {
   props: {
@@ -14,6 +17,7 @@ export default {
     markdownHTML() {
       return remark()
         .data('settings', { footnotes: true })
+        .use(highlightjs)
         .use(html)
         .processSync(this.markdown).contents
     }
@@ -57,6 +61,10 @@ export default {
       color: $DARK_SKY;
       content: '[' counter(number) ']';
     }
+  }
+
+  code {
+    line-height: 1.2;
   }
 }
 </style>
