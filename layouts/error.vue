@@ -17,18 +17,18 @@ export default {
   props: {
     error: {
       required: true,
-      type: Object,
-    },
+      type: Object
+    }
   },
   head: {
     meta: [
       {
         hid: 'robots',
         name: 'robots',
-        content: 'noindex',
-      },
-    ],
-  },
+        content: 'noindex'
+      }
+    ]
+  }
 }
 </script>
 

@@ -27,24 +27,24 @@
 <script>
 export default {
   filters: {
-    formatDate: (value) => new Date(value).toLocaleString(),
+    formatDate: value => new Date(value).toLocaleString()
   },
   props: {
     post: {
       type: Object,
       required: true,
-      validate: (post) => post.title,
+      validate: post => post.title
     },
     transparent: {
       type: Boolean,
       required: false,
-      default: false,
+      default: false
     },
     withCategory: {
       type: Boolean,
       required: false,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     path() {
@@ -52,32 +52,32 @@ export default {
         name: 'category-slug',
         params: {
           category: this.post.category,
-          slug: this.post.slug,
-        },
+          slug: this.post.slug
+        }
       }
     },
     categoryPath() {
       return {
         name: 'category',
         params: {
-          category: this.post.category,
-        },
+          category: this.post.category
+        }
       }
     },
     tagPath() {
-      return (tag) => ({
+      return tag => ({
         name: 'tags-tag',
         params: {
-          tag,
-        },
+          tag
+        }
       })
-    },
+    }
   },
   methods: {
     jumpTo() {
       this.$router.push(this.path)
-    },
-  },
+    }
+  }
 }
 </script>
 

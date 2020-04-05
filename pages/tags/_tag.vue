@@ -17,26 +17,26 @@ const client = createClient()
 
 export default {
   components: { PostCard },
+  computed: {
+    pageTitle() {
+      return `タグ 「${this.$route.params.tag}」を含む記事`
+    }
+  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
-        post: payload,
+        post: payload
       }
     }
     const posts = await client.getEntries({
       content_type: 'post',
       'fields.tag': params.tag,
-      order: '-fields.publishAt',
+      order: '-fields.publishAt'
     })
 
     return {
-      posts,
+      posts
     }
-  },
-  computed: {
-    pageTitle() {
-      return `タグ 「${this.$route.params.tag}」を含む記事`
-    },
   },
   head() {
     return {
@@ -44,10 +44,10 @@ export default {
       link: [
         {
           hid: 'cannonical',
-          href: `https://fuya.info/tags/${this.$route.params.tag}/`,
-        },
-      ],
+          href: `https://fuya.info/tags/${this.$route.params.tag}/`
+        }
+      ]
     }
-  },
+  }
 }
 </script>
