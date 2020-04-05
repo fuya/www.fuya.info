@@ -19,16 +19,6 @@ const client = createClient()
 
 export default {
   components: { PostCard },
-  computed: {
-    pageTitle() {
-      return this.$route.params.category === 'posts'
-        ? '記事一覧'
-        : `カテゴリ ${this.$route.params.category}`
-    },
-    withCategory() {
-      return this.$route.params.category === 'posts'
-    }
-  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
@@ -46,6 +36,16 @@ export default {
       posts
     }
   },
+  computed: {
+    pageTitle() {
+      return this.$route.params.category === 'posts'
+        ? '記事一覧'
+        : `カテゴリ ${this.$route.params.category}`
+    },
+    withCategory() {
+      return this.$route.params.category === 'posts'
+    }
+  },
   head() {
     return {
       title: `${this.pageTitle} | Fuya.info`,
@@ -58,7 +58,9 @@ export default {
     }
   },
   validate({ params }) {
-    return ['posts', 'diary', 'snippets', 'meetup'].includes(params.category)
+    return ['posts', 'diary', 'snippets', 'meetup', 'voice'].includes(
+      params.category
+    )
   }
 }
 </script>

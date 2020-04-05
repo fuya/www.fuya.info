@@ -153,7 +153,7 @@ module.exports = {
               payload: post
             }
           ]),
-          ['/posts/', '/diary/', '/snippets/', '/meetup/']
+          ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/']
         ].flat(Infinity)
       })
     }
@@ -174,7 +174,7 @@ module.exports = {
               `/${post.fields.category}/${post.fields.slug}/`,
               `/posts/${post.fields.slug}/`
             ]),
-            ['/posts/', '/diary/', '/snippets/', '/meetup/']
+            ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/']
           ].flat(Infinity)
         )
     }
@@ -198,7 +198,7 @@ module.exports = {
             title: post.fields.title,
             id: post.fields.slug,
             link: `https://fuya.info/${post.fields.category}/${post.fields.slug}/`,
-            description: post.fields.summary,
+            description: post.fields.summary || '',
             date: new Date(post.fields.publishAt),
             image: post.fields.ogImage && post.fields.ogImage.fields.file.url
           })

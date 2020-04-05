@@ -49,21 +49,6 @@ export default {
     formatDate: value => new Date(value).toLocaleDateString()
   },
   components: { Markdown },
-  data() {
-    return {
-      showTitle: false
-    }
-  },
-  computed: {
-    tagPath() {
-      return tag => ({
-        name: 'tags-tag',
-        params: {
-          tag
-        }
-      })
-    }
-  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
@@ -86,6 +71,21 @@ export default {
 
     return {
       post
+    }
+  },
+  data() {
+    return {
+      showTitle: false
+    }
+  },
+  computed: {
+    tagPath() {
+      return tag => ({
+        name: 'tags-tag',
+        params: {
+          tag
+        }
+      })
     }
   },
   methods: {
@@ -141,7 +141,9 @@ export default {
   validate({ params }) {
     return (
       /^[-0-9a-z_]+$/.test(params.slug) &&
-      ['posts', 'diary', 'snippets', 'meetup'].includes(params.category)
+      ['posts', 'diary', 'snippets', 'meetup', 'voice'].includes(
+        params.category
+      )
     )
   }
 }
