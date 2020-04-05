@@ -31,9 +31,9 @@ export default {
     design: {
       required: true,
       type: String,
-      validate: val => ['header', 'footer'].includes(val)
-    }
-  }
+      validate: (val) => ['header', 'footer'].includes(val),
+    },
+  },
 }
 </script>
 

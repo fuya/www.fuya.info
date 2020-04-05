@@ -10,8 +10,8 @@ export default {
   props: {
     markdown: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     markdownHTML() {
@@ -20,7 +20,7 @@ export default {
         .use(highlightjs)
         .use(html)
         .processSync(this.markdown).contents
-    }
+    },
   },
   created() {
     setTimeout(() => {
@@ -29,7 +29,7 @@ export default {
         twttr.widgets.load()
       } catch (e) {}
     }, 20)
-  }
+  },
 }
 </script>
 

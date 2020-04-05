@@ -18,18 +18,24 @@ import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
-  head() {
+  components: { PostCard },
+  async asyncData({ params, error, payload }) {
+    if (payload) {
+      return {
+        post: payload,
+      }
+    }
+    const category = params.category === 'posts' ? undefined : params.category
+    const posts = await client.getEntries({
+      content_type: 'post',
+      'fields.category': category,
+      order: '-fields.publishAt',
+    })
+
     return {
-      title: `${this.pageTitle} | Fuya.info`,
-      link: [
-        {
-          hid: 'cannonical',
-          href: `https://fuya.info/${this.$route.params.category}/`
-        }
-      ]
+      posts,
     }
   },
-  components: { PostCard },
   computed: {
     pageTitle() {
       return this.$route.params.category === 'posts'
@@ -38,27 +44,21 @@ export default {
     },
     withCategory() {
       return this.$route.params.category === 'posts'
-    }
+    },
   },
-  async asyncData({ params, error, payload }) {
-    if (payload) {
-      return {
-        post: payload
-      }
-    }
-    const category = params.category === 'posts' ? undefined : params.category
-    const posts = await client.getEntries({
-      content_type: 'post',
-      'fields.category': category,
-      order: '-fields.publishAt'
-    })
-
+  head() {
     return {
-      posts
+      title: `${this.pageTitle} | Fuya.info`,
+      link: [
+        {
+          hid: 'cannonical',
+          href: `https://fuya.info/${this.$route.params.category}/`,
+        },
+      ],
     }
   },
   validate({ params }) {
     return ['posts', 'diary', 'snippets', 'meetup'].includes(params.category)
-  }
+  },
 }
 </script>

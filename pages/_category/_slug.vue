@@ -46,78 +46,18 @@ const client = createClient()
 
 export default {
   filters: {
-    formatDate: value => new Date(value).toLocaleDateString()
-  },
-  head() {
-    return {
-      title: `${this.post.fields.title} | Fuya.info`,
-      link: [
-        {
-          hid: 'cannonical',
-          href: `https://fuya.info/${this.post.fields.category}/${this.post.fields.slug}/`
-        }
-      ],
-      script: [
-        {
-          async: 'async',
-          src: 'https://speakerdeck.com/assets/embed.js',
-          charset: 'utf-8'
-        }
-      ],
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: `${this.post.fields.summary}`
-        },
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          property: 'og:title',
-          content: `${this.post.fields.title} | Fuya.info`
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          property: 'og:description',
-          content: `${this.post.fields.summary || this.post.fields.title}`
-        },
-        this.post.fields.ogImage
-          ? {
-              hid: 'og:image',
-              name: 'og:image',
-              property: 'og:image',
-              content: `${this.post.fields.ogImage.fields.file.url}`
-            }
-          : {}
-      ]
-    }
+    formatDate: (value) => new Date(value).toLocaleDateString(),
   },
   components: { Markdown },
-  data() {
-    return {
-      showTitle: false
-    }
-  },
-  computed: {
-    tagPath() {
-      return tag => ({
-        name: 'tags-tag',
-        params: {
-          tag
-        }
-      })
-    }
-  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
-        post: payload
+        post: payload,
       }
     }
     const posts = await client.getEntries({
       content_type: 'post',
-      'fields.slug': params.slug
+      'fields.slug': params.slug,
     })
 
     if (!posts.total) {
@@ -130,7 +70,72 @@ export default {
     }
 
     return {
-      post
+      post,
+    }
+  },
+  data() {
+    return {
+      showTitle: false,
+    }
+  },
+  computed: {
+    tagPath() {
+      return (tag) => ({
+        name: 'tags-tag',
+        params: {
+          tag,
+        },
+      })
+    },
+  },
+  methods: {
+    handleScroll(t) {
+      this.showTitle = window.scrollY > 300
+    },
+  },
+  head() {
+    return {
+      title: `${this.post.fields.title} | Fuya.info`,
+      link: [
+        {
+          hid: 'cannonical',
+          href: `https://fuya.info/${this.post.fields.category}/${this.post.fields.slug}/`,
+        },
+      ],
+      script: [
+        {
+          async: 'async',
+          src: 'https://speakerdeck.com/assets/embed.js',
+          charset: 'utf-8',
+        },
+      ],
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.post.fields.summary}`,
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          property: 'og:title',
+          content: `${this.post.fields.title} | Fuya.info`,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          property: 'og:description',
+          content: `${this.post.fields.summary || this.post.fields.title}`,
+        },
+        this.post.fields.ogImage
+          ? {
+              hid: 'og:image',
+              name: 'og:image',
+              property: 'og:image',
+              content: `${this.post.fields.ogImage.fields.file.url}`,
+            }
+          : {},
+      ],
     }
   },
   validate({ params }) {
@@ -139,11 +144,6 @@ export default {
       ['posts', 'diary', 'snippets', 'meetup'].includes(params.category)
     )
   },
-  methods: {
-    handleScroll(t) {
-      this.showTitle = window.scrollY > 300
-    }
-  }
 }
 </script>
 
