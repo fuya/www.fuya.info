@@ -5,6 +5,7 @@ module.exports = {
   mode: 'universal',
 
   env: {
+    CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
     CONTENTFUL_TOKEN: process.env.CONTENTFUL_TOKEN
   },
 
