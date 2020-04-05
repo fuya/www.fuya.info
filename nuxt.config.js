@@ -4,6 +4,10 @@ const client = createClient()
 module.exports = {
   mode: 'universal',
 
+  env: {
+    CONTENTFUL_TOKEN: process.env.CONTENTFUL_TOKEN
+  },
+
   /*
    ** Headers of the page
    */
