@@ -66,9 +66,9 @@ export default {
 }
 
 .siteName {
+  flex-shrink: 0;
   padding: 0;
   margin: 0;
-  flex-shrink: 0;
   font-size: $x-large-font-size;
   @include max-screen($WIDTH_S) {
     margin: 0.2rem 0;

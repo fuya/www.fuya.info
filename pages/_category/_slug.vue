@@ -49,6 +49,21 @@ export default {
     formatDate: value => new Date(value).toLocaleDateString()
   },
   components: { Markdown },
+  data() {
+    return {
+      showTitle: false
+    }
+  },
+  computed: {
+    tagPath() {
+      return tag => ({
+        name: 'tags-tag',
+        params: {
+          tag
+        }
+      })
+    }
+  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
@@ -71,21 +86,6 @@ export default {
 
     return {
       post
-    }
-  },
-  data() {
-    return {
-      showTitle: false
-    }
-  },
-  computed: {
-    tagPath() {
-      return tag => ({
-        name: 'tags-tag',
-        params: {
-          tag
-        }
-      })
     }
   },
   methods: {
@@ -156,12 +156,13 @@ export default {
   z-index: 2;
   display: flex;
   align-items: center;
-  padding: 2px 0;
   height: $post-meta-stickey-height;
+  padding: 2px 0;
   font-size: $small-font-size;
   background: $WHITE;
 
   .title {
+    display: inline-block;
     max-width: 340px;
     margin-right: 0.2rem;
     overflow: hidden;
@@ -169,7 +170,6 @@ export default {
     font-weight: 500;
     text-overflow: ellipsis;
     white-space: nowrap;
-    display: inline-block;
   }
 
   .category {
@@ -261,7 +261,7 @@ export default {
 }
 
 .enterTo {
-  opacity: 0.8;
   width: 240px;
+  opacity: 0.8;
 }
 </style>
