@@ -200,7 +200,7 @@ module.exports = {
             link: `https://fuya.info/${post.fields.category}/${post.fields.slug}/`,
             description: post.fields.summary || '',
             date: new Date(post.fields.publishAt),
-            image: post.fields.ogImage && post.fields.ogImage.fields.file.url
+            image: `https://${post.fields.ogImage && post.fields.ogImage.fields.file.url}`
           })
         )
       },

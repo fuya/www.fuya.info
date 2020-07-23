@@ -132,7 +132,7 @@ export default {
               hid: 'og:image',
               name: 'og:image',
               property: 'og:image',
-              content: `${this.post.fields.ogImage.fields.file.url}`
+              content: `https://${this.post.fields.ogImage.fields.file.url}`
             }
           : {}
       ]
