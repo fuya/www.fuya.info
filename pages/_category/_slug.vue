@@ -251,17 +251,14 @@ export default {
 }
 
 .enterActive {
-  transition: 0.2s 0.3s opacity ease-out,
-    0.5s width cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  transition: 0.3s opacity ease-out;
 }
 
 .enterFrom {
-  width: 0;
   opacity: 0;
 }
 
 .enterTo {
-  width: 240px;
   opacity: 0.8;
 }
 </style>
