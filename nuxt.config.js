@@ -43,11 +43,17 @@ module.exports = {
         content: 'https://fuya.info/default_og_image.png'
       },
       {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        property: 'twitter:card',
+        content: 'summary'
+      },
+      {
         hid: 'twitter:site',
         name: 'twitter:site',
         property: 'twitter:site',
         content: '@_fuya'
-      }
+      },
     ],
     link: [
       {
@@ -200,7 +206,7 @@ module.exports = {
             link: `https://fuya.info/${post.fields.category}/${post.fields.slug}/`,
             description: post.fields.summary || '',
             date: new Date(post.fields.publishAt),
-            image: `https://${post.fields.ogImage && post.fields.ogImage.fields.file.url}`
+            image: `https:${post.fields.ogImage && post.fields.ogImage.fields.file.url}`
           })
         )
       },
