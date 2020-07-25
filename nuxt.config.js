@@ -53,7 +53,7 @@ module.exports = {
         name: 'twitter:site',
         property: 'twitter:site',
         content: '@_fuya'
-      },
+      }
     ],
     link: [
       {
