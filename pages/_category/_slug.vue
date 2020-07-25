@@ -127,14 +127,12 @@ export default {
           property: 'og:description',
           content: `${this.post.fields.summary || this.post.fields.title}`
         },
-        this.post.fields.ogImage
-          ? {
-              hid: 'og:image',
-              name: 'og:image',
-              property: 'og:image',
-              content: `https:${this.post.fields.ogImage.fields.file.url}`
-            }
-          : {}
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          property: 'og:image',
+          content: `https://fuya.info/ogimage/${this.post.fields.slug}.png`
+        }
       ]
     }
   },
