@@ -21,7 +21,7 @@ const generateOGP = async function() {
       attributes: { fill: '#fafdfa', stroke: '#111121' }
     })
     const textP = await sharp(Buffer.from(textSvg))
-      .resize(620, 620, {
+      .resize(580, 580, {
         fit: 'contain',
         background: { r: 0, g: 0, b: 0, alpha: 0 }
       })
