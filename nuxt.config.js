@@ -103,7 +103,8 @@ module.exports = {
       {
         id: 'UA-25035763-1'
       }
-    ]
+    ],
+    '@/modules/ogp'
   ],
   /*
    ** Axios module configuration
