@@ -16,12 +16,12 @@ const generateOGP = async function() {
     const textSvg = textToSVG.getSVG(post.fields.title, {
       x: 0,
       y: 0,
-      fontSize: 100,
+      fontSize: 72,
       anchor: 'top',
-      attributes: { fill: '#fafdfa', stroke: '#111121' }
+      attributes: { fill: '#fafdfa', stroke: '#0cb9ff' }
     })
     const textP = await sharp(Buffer.from(textSvg))
-      .resize(580, 580, {
+      .resize(624, 624, {
         fit: 'contain',
         background: { r: 0, g: 0, b: 0, alpha: 0 }
       })
