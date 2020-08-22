@@ -15,7 +15,7 @@ import Footer from '~/components/Footer'
 export default {
   components: {
     Header,
-    Footer
+    Footer,
   },
   head() {
     return {
@@ -23,16 +23,16 @@ export default {
         {
           async: 'async',
           src: 'https://platform.twitter.com/widgets.js',
-          charset: 'utf-8'
+          charset: 'utf-8',
         },
         {
           async: 'async',
           src: 'https://embed.small.chat/T0HH852NSGG43QQWHL.js',
-          charset: 'utf-8'
-        }
-      ]
+          charset: 'utf-8',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

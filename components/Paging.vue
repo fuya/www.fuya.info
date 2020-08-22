@@ -7,8 +7,8 @@
       :class="[
         $style.page,
         {
-          [$style.current]: currentPage === i - 1 + beginPage
-        }
+          [$style.current]: currentPage === i - 1 + beginPage,
+        },
       ]"
       :to="page(i - 1 + beginPage)"
     >
@@ -22,12 +22,12 @@ export default {
   props: {
     currentPage: {
       type: Number,
-      default: 1
+      default: 1,
     },
     totalPage: {
       type: Number,
-      default: 1
-    }
+      default: 1,
+    },
   },
   computed: {
     beginPage() {
@@ -35,15 +35,15 @@ export default {
     },
     endPage() {
       return Math.min(this.currentPage + 3, this.totalPage)
-    }
+    },
   },
   methods: {
     page(pageNumber) {
       return {
-        query: { page: pageNumber }
+        query: { page: pageNumber },
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

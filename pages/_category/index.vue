@@ -29,6 +29,25 @@ const POST_PER_PAGE = 7
 
 export default {
   components: { PostCard, Paging },
+  async asyncData({ params, query, error, payload }) {
+    if (payload) {
+      return {
+        post: payload,
+      }
+    }
+    const category = params.category === 'posts' ? undefined : params.category
+    const posts = await client.getEntries({
+      content_type: 'post',
+      'fields.category': category,
+      order: '-fields.publishAt',
+      skip: ((query.page || 1) - 1) * POST_PER_PAGE,
+      limit: POST_PER_PAGE,
+    })
+
+    return {
+      posts,
+    }
+  },
   computed: {
     pageTitle() {
       return this.$route.params.category === 'posts'
@@ -50,28 +69,9 @@ export default {
     nextPage() {
       return {
         name: this.$route.name,
-        query: { page: this.currentPageNumber + 1 }
+        query: { page: this.currentPageNumber + 1 },
       }
-    }
-  },
-  async asyncData({ params, query, error, payload }) {
-    if (payload) {
-      return {
-        post: payload
-      }
-    }
-    const category = params.category === 'posts' ? undefined : params.category
-    const posts = await client.getEntries({
-      content_type: 'post',
-      'fields.category': category,
-      order: '-fields.publishAt',
-      skip: ((query.page || 1) - 1) * POST_PER_PAGE,
-      limit: POST_PER_PAGE
-    })
-
-    return {
-      posts
-    }
+    },
   },
   watchQuery: ['page'],
   head() {
@@ -80,15 +80,15 @@ export default {
       link: [
         {
           hid: 'cannonical',
-          href: `https://fuya.info/${this.$route.params.category}/`
-        }
-      ]
+          href: `https://fuya.info/${this.$route.params.category}/`,
+        },
+      ],
     }
   },
   validate({ params }) {
     return ['posts', 'diary', 'snippets', 'meetup', 'voice'].includes(
       params.category
     )
-  }
+  },
 }
 </script>

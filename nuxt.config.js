@@ -6,7 +6,7 @@ module.exports = {
 
   env: {
     CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
-    CONTENTFUL_TOKEN: process.env.CONTENTFUL_TOKEN
+    CONTENTFUL_TOKEN: process.env.CONTENTFUL_TOKEN,
   },
 
   /*
@@ -21,39 +21,39 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content:
-          'Fuya.info は Fuyaのウェブサイトです。いろいろなことを書きます。'
+          'Fuya.info は Fuyaのウェブサイトです。いろいろなことを書きます。',
       },
       {
         hid: 'og:title',
         name: 'og:title',
         property: 'og:title',
-        content: `Fuya.info`
+        content: `Fuya.info`,
       },
       {
         hid: 'og:description',
         name: 'og:description',
         property: 'og:description',
         content:
-          'Fuya.info は Fuyaのウェブサイトです。いろいろなことを書きます。'
+          'Fuya.info は Fuyaのウェブサイトです。いろいろなことを書きます。',
       },
       {
         hid: 'og:image',
         name: 'og:image',
         property: 'og:image',
-        content: 'https://fuya.info/default_og_image.png'
+        content: 'https://fuya.info/default_og_image.png',
       },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
         property: 'twitter:card',
-        content: 'summary'
+        content: 'summary',
       },
       {
         hid: 'twitter:site',
         name: 'twitter:site',
         property: 'twitter:site',
-        content: '@_fuya'
-      }
+        content: '@_fuya',
+      },
     ],
     link: [
       {
@@ -61,9 +61,9 @@ module.exports = {
         rel: 'alternate',
         type: 'application/rss+xml',
         href: 'https://fuya.info/feed.rss',
-        title: 'RSS2.0'
-      }
-    ]
+        title: 'RSS2.0',
+      },
+    ],
   },
 
   /*
@@ -76,11 +76,11 @@ module.exports = {
    */
   css: ['normalize.css', '~/assets/scss/base.scss'],
   styleResources: {
-    scss: ['~/assets/scss/variables.scss']
+    scss: ['~/assets/scss/variables.scss'],
   },
 
   router: {
-    middleware: 'redirect_endwith_dothtml'
+    middleware: 'redirect_endwith_dothtml',
   },
 
   /*
@@ -101,10 +101,10 @@ module.exports = {
     [
       '@nuxtjs/google-analytics',
       {
-        id: 'UA-25035763-1'
-      }
+        id: 'UA-25035763-1',
+      },
     ],
-    '@/modules/ogp'
+    '@/modules/ogp',
   ],
   /*
    ** Axios module configuration
@@ -135,10 +135,10 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
         })
       }
-    }
+    },
   },
   generate: {
     fallback: true,
@@ -146,24 +146,24 @@ module.exports = {
     routes() {
       return Promise.all([
         client.getEntries({
-          content_type: 'post'
-        })
+          content_type: 'post',
+        }),
       ]).then(([posts]) => {
         return [
-          posts.items.map(post => [
+          posts.items.map((post) => [
             {
               route: `${post.fields.category}/${post.fields.slug}/`,
-              payload: post
+              payload: post,
             },
             {
               route: `posts/${post.fields.slug}/`,
-              payload: post
-            }
+              payload: post,
+            },
           ]),
-          ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/']
+          ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/'],
         ].flat(Infinity)
       })
-    }
+    },
   },
   sitemap: {
     path: '/sitemap.xml',
@@ -173,18 +173,18 @@ module.exports = {
     routes() {
       return client
         .getEntries({
-          content_type: 'post'
+          content_type: 'post',
         })
-        .then(posts =>
+        .then((posts) =>
           [
-            posts.items.map(post => [
+            posts.items.map((post) => [
               `/${post.fields.category}/${post.fields.slug}/`,
-              `/posts/${post.fields.slug}/`
+              `/posts/${post.fields.slug}/`,
             ]),
-            ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/']
+            ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/'],
           ].flat(Infinity)
         )
-    }
+    },
   },
   feed: [
     {
@@ -193,26 +193,26 @@ module.exports = {
         feed.options = {
           title: 'Fuya.info',
           link: 'https://fuya.info/feed.rss',
-          description: 'Fuya のブログです。日記や技術記事などを書きます。'
+          description: 'Fuya のブログです。日記や技術記事などを書きます。',
         }
         const posts = await client.getEntries({
           content_type: 'post',
           order: '-fields.publishAt',
-          limit: 10
+          limit: 10,
         })
-        posts.items.forEach(post =>
+        posts.items.forEach((post) =>
           feed.addItem({
             title: post.fields.title,
             id: post.fields.slug,
             link: `https://fuya.info/${post.fields.category}/${post.fields.slug}/`,
             description: post.fields.summary || '',
             date: new Date(post.fields.publishAt),
-            image: `https://fuya.info/ogimages/${post.fields.slug}.png`
+            image: `https://fuya.info/ogimages/${post.fields.slug}.png`,
           })
         )
       },
       cacheTime: 1000 * 60 * 15,
-      type: 'rss2'
-    }
-  ]
+      type: 'rss2',
+    },
+  ],
 }

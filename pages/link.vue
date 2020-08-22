@@ -16,14 +16,14 @@ const client = createClient()
 export default {
   components: { Markdown },
   asyncData() {
-    return client.getEntry('VyjGFIBVmXqGUPI5mjvjR').then(entry => ({
-      entry
+    return client.getEntry('VyjGFIBVmXqGUPI5mjvjR').then((entry) => ({
+      entry,
     }))
   },
   head() {
     return {
-      title: this.entry.fields.title + ' | Fuya.info'
+      title: this.entry.fields.title + ' | Fuya.info',
     }
-  }
+  },
 }
 </script>

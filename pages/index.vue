@@ -51,14 +51,14 @@ export default {
       client.getEntries({
         content_type: 'post',
         order: '-fields.publishAt',
-        limit: 10
-      })
+        limit: 10,
+      }),
     ]).then(([posts]) => {
       return {
-        posts: posts.items
+        posts: posts.items,
       }
     })
-  }
+  },
 }
 </script>
 
