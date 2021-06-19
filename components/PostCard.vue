@@ -1,6 +1,9 @@
 <template>
   <div :class="[$style.card, { [$style.transparent]: transparent }]">
-    <nuxt-link :to="path" :class="$style.title">
+    <div v-if="post.isShortPost" :class="$style.title">
+      {{ post.title }}
+    </div>
+    <nuxt-link v-else :to="path" :class="$style.title">
       {{ post.title }}
     </nuxt-link>
     <div :class="$style.summary">
@@ -136,9 +139,12 @@ export default {
   }
 }
 
-a.title {
+.title {
   font-size: $huge-font-size;
   font-weight: 100;
+}
+
+a.title {
   text-decoration: none;
 }
 
