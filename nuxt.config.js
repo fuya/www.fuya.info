@@ -2,7 +2,8 @@ import { createClient } from './plugins/contentful.js'
 const client = createClient()
 
 module.exports = {
-  mode: 'spa',
+  ssr: false,
+  target: 'static',
 
   env: {
     CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
