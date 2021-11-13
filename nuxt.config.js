@@ -143,26 +143,24 @@ module.exports = {
   generate: {
     fallback: true,
     interval: 100,
-    routes() {
-      return Promise.all([
-        client.getEntries({
-          content_type: 'post',
-        }),
-      ]).then(([posts]) => {
-        return [
-          posts.items.map((post) => [
-            {
-              route: `${post.fields.category}/${post.fields.slug}/`,
-              payload: post,
-            },
-            {
-              route: `posts/${post.fields.slug}/`,
-              payload: post,
-            },
-          ]),
-          ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/'],
-        ].flat(Infinity)
+    async routes() {
+      const posts = await client.getEntries({
+        content_type: 'post',
       })
+
+      return [
+        posts.items.map((post) => [
+          {
+            route: `${post.fields.category}/${post.fields.slug}/`,
+            payload: post,
+          },
+          {
+            route: `posts/${post.fields.slug}/`,
+            payload: post,
+          },
+        ]),
+        ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/'],
+      ].flat(Infinity)
     },
   },
   sitemap: {
