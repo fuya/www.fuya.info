@@ -169,7 +169,6 @@ module.exports = {
     path: '/sitemap.xml',
     hostname: 'https://fuya.info',
     cacheTime: 1000 * 60 * 60 * 3,
-    generate: true,
     routes() {
       return client
         .getEntries({
