@@ -16,7 +16,7 @@
         </nuxt-link>
       </span>
       <span :class="$style.publishAt">
-        {{ post.publishAt | formatDate }}
+        {{ formatDate(post.publishAt) }}
       </span>
       <span v-for="(tag, i) in post.tag" :key="i" :class="$style.tag">
         <nuxt-link :to="tagPath(tag)">
@@ -29,9 +29,6 @@
 
 <script>
 export default {
-  filters: {
-    formatDate: (value) => new Date(value).toLocaleString(),
-  },
   props: {
     post: {
       type: Object,
@@ -79,6 +76,9 @@ export default {
   methods: {
     jumpTo() {
       this.$router.push(this.path)
+    },
+    formatDate(value) {
+      return new Date(value).toLocaleString()
     },
   },
 }

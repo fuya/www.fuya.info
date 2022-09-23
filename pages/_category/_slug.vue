@@ -14,7 +14,7 @@
         {{ post.fields.category }}
       </nuxt-link>
       <span :class="$style.publishAt">
-        {{ post.fields.publishAt | formatDate }}
+        {{ formatDate(post.fields.publishAt) }}
       </span>
       <nuxt-link
         v-for="(tag, i) in post.fields.tag"
@@ -45,10 +45,15 @@ import Markdown from '~/components/Markdown'
 const client = createClient()
 
 export default {
-  filters: {
-    formatDate: (value) => new Date(value).toLocaleDateString(),
-  },
   components: { Markdown },
+  validate({ params }) {
+    return (
+      /^[-0-9a-z_]+$/.test(params.slug) &&
+      ['posts', 'diary', 'snippets', 'meetup', 'voice'].includes(
+        params.category
+      )
+    )
+  },
   async asyncData({ params, error, payload }) {
     if (payload) {
       return {
@@ -77,21 +82,6 @@ export default {
     return {
       showTitle: false,
     }
-  },
-  computed: {
-    tagPath() {
-      return (tag) => ({
-        name: 'tags-tag',
-        params: {
-          tag,
-        },
-      })
-    },
-  },
-  methods: {
-    handleScroll(t) {
-      this.showTitle = window.scrollY > 300
-    },
   },
   head() {
     return {
@@ -136,13 +126,23 @@ export default {
       ],
     }
   },
-  validate({ params }) {
-    return (
-      /^[-0-9a-z_]+$/.test(params.slug) &&
-      ['posts', 'diary', 'snippets', 'meetup', 'voice'].includes(
-        params.category
-      )
-    )
+  computed: {
+    tagPath() {
+      return (tag) => ({
+        name: 'tags-tag',
+        params: {
+          tag,
+        },
+      })
+    },
+  },
+  methods: {
+    handleScroll(t) {
+      this.showTitle = window.scrollY > 300
+    },
+    formatDate(value) {
+      return new Date(value).toLocaleDateString()
+    },
   },
 }
 </script>
