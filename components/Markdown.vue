@@ -2,9 +2,13 @@
 import 'highlight.js/styles/dark.css'
 
 /* eslint-disable vue/no-v-html */
-import remark from 'remark'
-import html from 'remark-html'
-import highlightjs from 'remark-highlight.js'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import rehypeHighlight from 'rehype-highlight'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkRehype from 'remark-rehype'
+import remarkGfm from 'remark-gfm'
+import rehypeStringify from 'rehype-stringify'
 
 export default {
   props: {
@@ -13,13 +17,12 @@ export default {
       required: true,
     },
   },
-  computed: {
-    markdownHTML() {
-      return remark()
-        .data('settings', { footnotes: true })
-        .use(highlightjs)
-        .use(html)
-        .processSync(this.markdown).contents
+  data() {
+    return { markdownHTML: '' }
+  },
+  watch: {
+    markdown() {
+      this.updateMarkdown()
     },
   },
   created() {
@@ -28,7 +31,22 @@ export default {
         // eslint-disable-next-line no-undef
         twttr.widgets.load()
       } catch (e) {}
+      this.updateMarkdown()
+
     }, 20)
+  },
+  methods: {
+    async updateMarkdown() {
+      const t = await unified()
+        .use(remarkParse)
+        .use(remarkFrontmatter)
+        .use(remarkGfm)
+        .use(remarkRehype)
+        .use(rehypeHighlight)
+        .use(rehypeStringify)
+        .process(this.markdown)
+      this.markdownHTML = t.value
+    },
   },
 }
 </script>
@@ -40,28 +58,6 @@ export default {
 <style lang="scss">
 .md {
   counter-reset: number;
-
-  .footnote-ref {
-    position: relative;
-    top: -200px;
-    left: -10000px;
-    display: inline-block;
-    width: 1.8rem;
-    color: transparent;
-    counter-increment: number;
-    opacity: 1;
-
-    &:before {
-      position: relative;
-      top: 200px;
-      left: 10000px;
-      margin: 0 0.2rem;
-      font-size: $large-font-size;
-      font-weight: bold;
-      color: $DARK_SKY;
-      content: '[' counter(number) ']';
-    }
-  }
 
   code {
     line-height: 1.2;

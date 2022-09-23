@@ -1,7 +1,8 @@
+import { defineNuxtConfig } from '@nuxt/bridge'
 import { createClient } from './plugins/contentful.js'
 const client = createClient()
 
-module.exports = {
+export default defineNuxtConfig({
   ssr: false,
   target: 'static',
 
@@ -93,8 +94,6 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/feed',
@@ -107,12 +106,6 @@ module.exports = {
     ],
     '@/modules/ogp',
   ],
-  /*
-   ** Axios module configuration
-   */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-  },
 
   /*
    ** Build configuration
@@ -129,18 +122,11 @@ module.exports = {
       //     : '_[hash:base64:7]'
       // https://github.com/nuxt/nuxt.js/issues/5030
       ctx.loaders.cssModules.camelCase = true
-
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/,
-        })
-      }
     },
   },
+  buildModules: [
+    '@nuxtjs/eslint-module'
+  ],
   generate: {
     fallback: true,
     interval: 100,
@@ -213,4 +199,4 @@ module.exports = {
       type: 'rss2',
     },
   ],
-}
+})

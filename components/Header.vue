@@ -7,8 +7,7 @@
             :class="$style.image"
             src="~assets/images/fi480.png"
             alt="Fuya.info"
-          />
-        </h1>
+          />          </h1>
       </nuxt-link>
       <Menu design="header" />
     </header>
@@ -19,16 +18,17 @@
 import Menu from '~/components/Menu'
 
 export default {
-  components: { Menu },
+  components: {
+     Menu },
 }
 </script>
 
 <style lang="scss" module>
 .header {
-  height: $header-height;
   background: $WHITE;
+  height: $header-height;
   @include max-screen($WIDTH_S) {
-    height: $header-height / 2;
+    height: calc($header-height / 2);
   }
   @include min-screen($WIDTH_S) {
     padding: 0 1rem;
