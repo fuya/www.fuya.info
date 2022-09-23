@@ -124,9 +124,7 @@ export default defineNuxtConfig({
       ctx.loaders.cssModules.camelCase = true
     },
   },
-  buildModules: [
-    '@nuxtjs/eslint-module'
-  ],
+  buildModules: ['@nuxtjs/eslint-module'],
   generate: {
     fallback: true,
     interval: 100,
@@ -153,6 +151,12 @@ export default defineNuxtConfig({
           console.log(o)
           if (typeof o === 'string') return o
           return `/${o.route}`
+        })
+        .map((s) => {
+          if (s.endsWith('/')) {
+            return s.slice(0, -1)
+          }
+          return s
         })
       return t
     },
