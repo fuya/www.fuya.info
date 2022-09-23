@@ -26,6 +26,8 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^10.3.1",
     "sharp": "^0.31.0",
     "text-to-svg": "^3.1.5",
     "unified": "^10.1.2"
@@ -37,8 +39,6 @@
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-nuxt": "^4.0.0",
-    "prettier": "^2.7.1",
-    "sass": "^1.54.9",
-    "sass-loader": "^10.3.1"
+    "prettier": "^2.7.1"
   }
 }

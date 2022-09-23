@@ -135,7 +135,7 @@ export default defineNuxtConfig({
         content_type: 'post',
       })
 
-      return [
+      const t = [
         posts.items.map((post) => [
           {
             route: `${post.fields.category}/${post.fields.slug}/`,
@@ -147,7 +147,14 @@ export default defineNuxtConfig({
           },
         ]),
         ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/'],
-      ].flat(Infinity)
+      ]
+        .flat(Infinity)
+        .map((o) => {
+          console.log(o)
+          if (typeof o === 'string') return o
+          return `/${o.route}`
+        })
+      return t
     },
   },
   sitemap: {
