@@ -34,6 +34,7 @@ export default {
 <style lang="scss" module>
 .main {
   padding: 0 1.5rem;
+
   @include min-screen($WIDTH_M) {
     max-width: $WIDTH_M;
     padding: 0 2rem;
