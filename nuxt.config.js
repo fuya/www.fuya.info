@@ -104,7 +104,7 @@ export default defineNuxtConfig({
         id: 'UA-25035763-1',
       },
     ],
-    '@/modules/ogp',
+    '~/modules/ogp.js',
   ],
 
   /*
@@ -148,7 +148,6 @@ export default defineNuxtConfig({
       ]
         .flat(Infinity)
         .map((o) => {
-          console.log(o)
           if (typeof o === 'string') return o
           return `/${o.route}`
         })

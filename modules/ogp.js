@@ -39,7 +39,7 @@ const generateOGP = async function () {
 }
 
 module.exports = function () {
-  this.nuxt.hook('generate:done', (generator) => {
+  this.nuxt.hook('build:done', () => {
     generateOGP()
   })
 }
