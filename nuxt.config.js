@@ -143,6 +143,7 @@ export default defineNuxtConfig({
             route: `posts/${post.fields.slug}/`,
             payload: post,
           },
+          post.fields.tag.map(t => `/tags/${t}`)
         ]),
         ['/posts/', '/diary/', '/snippets/', '/meetup/', '/voice/'],
       ]
